@@ -1,0 +1,20 @@
+# mwdb-feeder Docker Compose
+# Multi-source malware aggregator for MWDB
+
+services:
+  mwdb-feeder:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mwdb-feeder
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ./work:/work
+    networks:
+      - mwdb-network
+
+networks:
+  mwdb-network:
+    external: true

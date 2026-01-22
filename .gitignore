@@ -1,0 +1,21 @@
+# Secrets and environment
+.env
+*.env.local
+
+# Runtime data
+work/
+*.db
+*.log
+*.jsonl
+*.pid
+*.lock
+reports/
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# Docker
+docker-compose.override.yml
