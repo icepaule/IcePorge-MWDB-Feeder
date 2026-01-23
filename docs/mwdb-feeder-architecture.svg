@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="feedGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea"/>
+      <stop offset="100%" style="stop-color:#764ba2"/>
+    </linearGradient>
+    <linearGradient id="containerGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#11998e"/>
+      <stop offset="100%" style="stop-color:#38ef7d"/>
+    </linearGradient>
+    <linearGradient id="mwdbGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb"/>
+      <stop offset="100%" style="stop-color:#f5576c"/>
+    </linearGradient>
+    <linearGradient id="kartonGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe"/>
+      <stop offset="100%" style="stop-color:#00f2fe"/>
+    </linearGradient>
+    <linearGradient id="storageGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fa709a"/>
+      <stop offset="100%" style="stop-color:#fee140"/>
+    </linearGradient>
+    <linearGradient id="capeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff0844"/>
+      <stop offset="100%" style="stop-color:#ffb199"/>
+    </linearGradient>
+
+    <!-- Shadow filter -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="3" dy="3" stdDeviation="4" flood-opacity="0.3"/>
+    </filter>
+
+    <!-- Glow filter -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="700" fill="#0f0f23"/>
+
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" font-size="24" font-weight="bold" fill="#ffffff">MWDB-Feeder Pipeline v1.0.0</text>
+  <text x="450" y="62" text-anchor="middle" font-size="12" fill="#888">Multi-Source Malware Sample Aggregator</text>
+
+  <!-- EXTERNAL FEEDS Section -->
+  <rect x="50" y="80" width="800" height="130" rx="10" fill="none" stroke="#667eea" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="70" y="100" font-size="11" fill="#667eea" font-weight="bold">EXTERNE THREAT FEEDS</text>
+
+  <!-- URLhaus -->
+  <rect x="70" y="115" width="170" height="80" rx="8" fill="url(#feedGrad)" filter="url(#shadow)"/>
+  <text x="155" y="142" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">URLhaus</text>
+  <text x="155" y="160" text-anchor="middle" font-size="10" fill="#ddd">abuse.ch</text>
+  <text x="155" y="178" text-anchor="middle" font-size="9" fill="#aaffaa">Poll: 5 min</text>
+
+  <!-- ThreatFox -->
+  <rect x="260" y="115" width="170" height="80" rx="8" fill="url(#feedGrad)" filter="url(#shadow)"/>
+  <text x="345" y="142" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">ThreatFox</text>
+  <text x="345" y="160" text-anchor="middle" font-size="10" fill="#ddd">abuse.ch</text>
+  <text x="345" y="178" text-anchor="middle" font-size="9" fill="#aaffaa">Poll: 5 min</text>
+
+  <!-- Hybrid Analysis -->
+  <rect x="450" y="115" width="170" height="80" rx="8" fill="url(#feedGrad)" filter="url(#shadow)"/>
+  <text x="535" y="142" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">Hybrid Analysis</text>
+  <text x="535" y="160" text-anchor="middle" font-size="10" fill="#ddd">Falcon Sandbox</text>
+  <text x="535" y="178" text-anchor="middle" font-size="9" fill="#aaffaa">Poll: 15 min</text>
+
+  <!-- ANY.RUN -->
+  <rect x="640" y="115" width="170" height="80" rx="8" fill="#3a3a5c" filter="url(#shadow)" stroke="#666" stroke-width="1"/>
+  <text x="725" y="142" text-anchor="middle" font-size="13" font-weight="bold" fill="#999">ANY.RUN</text>
+  <text x="725" y="160" text-anchor="middle" font-size="10" fill="#777">API-Key erforderlich</text>
+  <text x="725" y="178" text-anchor="middle" font-size="9" fill="#ff6666">Deaktiviert</text>
+
+  <!-- Arrow from feeds to container -->
+  <path d="M450 210 L450 240" stroke="#667eea" stroke-width="3" marker-end="url(#arrowPurple)"/>
+  <defs>
+    <marker id="arrowPurple" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#667eea"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#38ef7d"/>
+    </marker>
+    <marker id="arrowPink" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#f5576c"/>
+    </marker>
+    <marker id="arrowCyan" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#00f2fe"/>
+    </marker>
+  </defs>
+
+  <!-- DOCKER CONTAINER Section -->
+  <rect x="150" y="250" width="600" height="160" rx="10" fill="url(#containerGrad)" filter="url(#shadow)"/>
+  <text x="450" y="275" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">Docker Container: mwdb-feeder</text>
+  <text x="450" y="292" text-anchor="middle" font-size="10" fill="#ddd">/opt/mwdb-feeder/app/feeder.py</text>
+
+  <!-- Processing steps -->
+  <rect x="170" y="305" width="130" height="40" rx="5" fill="rgba(255,255,255,0.2)"/>
+  <text x="235" y="330" text-anchor="middle" font-size="10" fill="#fff">1. Poll Feed APIs</text>
+
+  <rect x="310" y="305" width="130" height="40" rx="5" fill="rgba(255,255,255,0.2)"/>
+  <text x="375" y="325" text-anchor="middle" font-size="10" fill="#fff">2. Deduplizierung</text>
+  <text x="375" y="338" text-anchor="middle" font-size="9" fill="#ddd">(SQLite)</text>
+
+  <rect x="450" y="305" width="130" height="40" rx="5" fill="rgba(255,255,255,0.2)"/>
+  <text x="515" y="325" text-anchor="middle" font-size="10" fill="#fff">3. Download</text>
+  <text x="515" y="338" text-anchor="middle" font-size="9" fill="#ddd">+ Hash-Verify</text>
+
+  <rect x="590" y="305" width="140" height="40" rx="5" fill="rgba(255,255,255,0.2)"/>
+  <text x="660" y="325" text-anchor="middle" font-size="10" fill="#fff">4. Upload + Tags</text>
+  <text x="660" y="338" text-anchor="middle" font-size="9" fill="#ddd">via mwdblib</text>
+
+  <!-- Size limit info -->
+  <rect x="170" y="355" width="550" height="25" rx="3" fill="rgba(0,0,0,0.3)"/>
+  <text x="445" y="372" text-anchor="middle" font-size="10" fill="#aaffaa">Max. 50 MB pro Sample | JSONL-Logging | Auto-Tagging (source, malware family, verdict)</text>
+
+  <!-- Arrow to MWDB -->
+  <path d="M450 420 L450 450" stroke="#38ef7d" stroke-width="3" marker-end="url(#arrowGreen)"/>
+
+  <!-- MWDB Section -->
+  <rect x="300" y="460" width="300" height="80" rx="10" fill="url(#mwdbGrad)" filter="url(#shadow)"/>
+  <text x="450" y="490" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">MWDB-Core</text>
+  <text x="450" y="510" text-anchor="middle" font-size="11" fill="#fff">http://mwdb:8080/api</text>
+  <text x="450" y="527" text-anchor="middle" font-size="10" fill="#ddd">Malware Repository + Web UI</text>
+
+  <!-- Arrow to Karton -->
+  <path d="M450 550 L450 580" stroke="#f5576c" stroke-width="3" marker-end="url(#arrowPink)"/>
+
+  <!-- KARTON PIPELINE Section -->
+  <rect x="100" y="590" width="700" height="90" rx="10" fill="url(#kartonGrad)" filter="url(#shadow)"/>
+  <text x="450" y="615" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">Karton Pipeline</text>
+
+  <!-- Karton modules -->
+  <rect x="120" y="625" width="100" height="40" rx="5" fill="rgba(255,255,255,0.25)"/>
+  <text x="170" y="650" text-anchor="middle" font-size="10" fill="#fff">classifier</text>
+
+  <text x="235" y="650" text-anchor="middle" font-size="16" fill="#fff">&gt;</text>
+
+  <rect x="250" y="625" width="120" height="40" rx="5" fill="rgba(255,255,255,0.25)"/>
+  <text x="310" y="645" text-anchor="middle" font-size="10" fill="#fff">archive-</text>
+  <text x="310" y="658" text-anchor="middle" font-size="10" fill="#fff">extractor</text>
+
+  <text x="385" y="650" text-anchor="middle" font-size="16" fill="#fff">&gt;</text>
+
+  <rect x="400" y="625" width="120" height="40" rx="5" fill="rgba(255,255,255,0.25)"/>
+  <text x="460" y="645" text-anchor="middle" font-size="10" fill="#fff">config-</text>
+  <text x="460" y="658" text-anchor="middle" font-size="10" fill="#fff">extractor</text>
+
+  <text x="535" y="650" text-anchor="middle" font-size="16" fill="#fff">&gt;</text>
+
+  <rect x="550" y="625" width="120" height="40" rx="5" fill="rgba(255,255,255,0.25)"/>
+  <text x="610" y="645" text-anchor="middle" font-size="10" fill="#fff">cape-</text>
+  <text x="610" y="658" text-anchor="middle" font-size="10" fill="#fff">submitter</text>
+
+  <text x="685" y="650" text-anchor="middle" font-size="16" fill="#fff">&gt;</text>
+
+  <!-- CAPE -->
+  <rect x="700" y="625" width="90" height="40" rx="5" fill="url(#capeGrad)"/>
+  <text x="745" y="650" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">CAPE</text>
+
+  <!-- Persistent Storage Box -->
+  <rect x="700" y="250" width="180" height="140" rx="8" fill="url(#storageGrad)" filter="url(#shadow)"/>
+  <text x="790" y="275" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">Persistente Daten</text>
+  <text x="790" y="295" text-anchor="middle" font-size="10" fill="#333">/opt/mwdb-feeder/work/</text>
+
+  <rect x="715" y="305" width="150" height="22" rx="3" fill="rgba(255,255,255,0.4)"/>
+  <text x="790" y="320" text-anchor="middle" font-size="9" fill="#333">state.db (SQLite)</text>
+
+  <rect x="715" y="332" width="150" height="22" rx="3" fill="rgba(255,255,255,0.4)"/>
+  <text x="790" y="347" text-anchor="middle" font-size="9" fill="#333">reports/mwdb-feeder.jsonl</text>
+
+  <rect x="715" y="359" width="150" height="22" rx="3" fill="rgba(255,255,255,0.4)"/>
+  <text x="790" y="374" text-anchor="middle" font-size="9" fill="#333">SIEM Integration</text>
+
+</svg>

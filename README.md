@@ -82,6 +82,59 @@ MWDB-Feeder automatisiert die kontinuierliche Beschaffung von Malware-Samples au
 
 ### 2.1 Architektur-Diagramm
 
+![MWDB-Feeder Architektur](docs/mwdb-feeder-architecture.svg)
+
+<details>
+<summary>Mermaid-Diagramm (klicken zum Ausklappen)</summary>
+
+```mermaid
+flowchart TB
+    subgraph FEEDS["EXTERNE THREAT FEEDS"]
+        URLhaus["URLhaus<br/>abuse.ch<br/>Poll: 5 min"]
+        ThreatFox["ThreatFox<br/>abuse.ch<br/>Poll: 5 min"]
+        Hybrid["Hybrid Analysis<br/>Falcon Sandbox<br/>Poll: 15 min"]
+        AnyRun["ANY.RUN<br/>API-Key nötig<br/>Deaktiviert"]
+    end
+
+    subgraph CONTAINER["Docker: mwdb-feeder"]
+        Poll["1. Poll Feed APIs"]
+        Dedupe["2. Deduplizierung<br/>SQLite"]
+        Download["3. Download<br/>+ Hash-Verify"]
+        Upload["4. Upload + Tags<br/>via mwdblib"]
+        Poll --> Dedupe --> Download --> Upload
+    end
+
+    subgraph STORAGE["Persistente Daten"]
+        StateDB["state.db"]
+        Reports["reports/mwdb-feeder.jsonl"]
+    end
+
+    FEEDS --> CONTAINER
+    CONTAINER --> MWDB["MWDB-Core<br/>http://mwdb:8080/api"]
+    CONTAINER -.-> STORAGE
+
+    subgraph KARTON["Karton Pipeline"]
+        Classifier["classifier"]
+        Archive["archive-extractor"]
+        Config["config-extractor"]
+        CapeSubmit["cape-submitter"]
+        Classifier --> Archive --> Config --> CapeSubmit
+    end
+
+    MWDB --> KARTON
+    CapeSubmit --> CAPE["CAPE Sandbox"]
+
+    style FEEDS fill:#667eea,color:#fff
+    style CONTAINER fill:#11998e,color:#fff
+    style MWDB fill:#f093fb,color:#fff
+    style KARTON fill:#4facfe,color:#fff
+    style CAPE fill:#ff0844,color:#fff
+```
+</details>
+
+<details>
+<summary>ASCII-Diagramm (Legacy)</summary>
+
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
 │                    MWDB-Feeder Pipeline (v1.0.0)                       │
@@ -93,7 +146,6 @@ MWDB-Feeder automatisiert die kontinuierliche Beschaffung von Malware-Samples au
 │   │  URLhaus    │  ThreatFox  │   Hybrid    │    ANY.RUN        │     │
 │   │  (abuse.ch) │  (abuse.ch) │  Analysis   │   (API-Key)       │     │
 │   │  Poll: 5min │  Poll: 5min │  Poll: 15min│   Poll: 10min     │     │
-│   │  ✅ Aktiv   │  ✅ Aktiv   │  ✅ Aktiv   │   ❌ API-Key nötig │     │
 │   └─────────────┴─────────────┴─────────────┴───────────────────┘     │
 │                               │                                        │
 │                               ▼                                        │
@@ -135,6 +187,7 @@ MWDB-Feeder automatisiert die kontinuierliche Beschaffung von Malware-Samples au
 │                                                                        │
 └────────────────────────────────────────────────────────────────────────┘
 ```
+</details>
 
 ### 2.2 Threat Intelligence Feeds
 
